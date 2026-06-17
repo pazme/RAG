@@ -2,7 +2,7 @@
 
 RAG over ~7,600 Medium articles. A question gets embedded, the closest chunks are
 pulled from Pinecone, and gpt-5-mini answers using only those chunks (no outside
-knowledge). Embeddings + chat both go through the LLMOD gateway.
+knowledge).
 
 ## Layout
 
