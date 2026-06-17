@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 import tiktoken
 from pinecone import Pinecone
@@ -85,4 +87,5 @@ def process_and_upload_articles(csv_path, articles_number=20):
     print("Pipeline finished successfully! Data is ready for querying.")
 
 
-process_and_upload_articles(r'data\medium-english-50mb.csv', articles_number=20)
+csv_file_path = Path(__file__).parent / "data" / "medium-english-50mb.csv"
+process_and_upload_articles(csv_file_path, articles_number=20)
