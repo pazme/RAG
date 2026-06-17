@@ -1,0 +1,11 @@
+# Claude
+CLAUDE.md
+.claude/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# IDE
+.idea/
