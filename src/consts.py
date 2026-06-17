@@ -1,13 +1,39 @@
-LLMOD_AI_API_KEY = "sk-UsoPaMc6fg-PFN-OkRXxSw"
-LLMOD_AI_URL = "https://api.llmod.ai/v1"
+import os
 
-PINECONE_API_KEY = "pcsk_4PENpS_5ynL4mmLMwaYhxqudUhNG4PStRdE5z5doDjtjRZzDtVi4wFEgp8bs8oaMsacGer"
-PINECONE_INDEX = "medium-rag-index"
+from dotenv import load_dotenv
 
-EMBEDDING_MODEL = "ZYRANGG-text-embedding-3-small"
-GPT_5_MODEL = "ZYRANGG-gpt-5-mini"
+load_dotenv()
 
-CHUNK_SIZE = 512
-OVERLAP_RATIO = 0.2
-OVERLAP_TOKENS = int(CHUNK_SIZE * OVERLAP_RATIO)
-BATCH_SIZE = 50
+
+class MissingConfigError(RuntimeError):
+    pass
+
+
+def _require_env(name: str) -> str:
+    value = os.environ.get(name)
+
+    if not value:
+        raise MissingConfigError(f"missing env var: {name}")
+
+    return value
+
+
+# secrets come from .env (local) / Vercel env (prod)
+LLMOD_AI_API_KEY: str = _require_env("LLMOD_AI_API_KEY")
+LLMOD_AI_URL: str = os.environ.get("LLMOD_AI_URL", "https://api.llmod.ai/v1")
+
+PINECONE_API_KEY: str = _require_env("PINECONE_API_KEY")
+PINECONE_INDEX: str = os.environ.get("PINECONE_INDEX", "medium-rag-index")
+
+# gateway model ids
+EMBEDDING_MODEL: str = "ZYRANGG-text-embedding-3-small"
+EMBEDDING_DIMENSIONS: int = 1536
+GPT_5_MODEL: str = "ZYRANGG-gpt-5-mini"
+
+# RAG params
+CHUNK_SIZE: int = 512
+OVERLAP_RATIO: float = 0.2
+OVERLAP_TOKENS: int = int(CHUNK_SIZE * OVERLAP_RATIO)
+TOP_K: int = 12
+
+BATCH_SIZE: int = 50

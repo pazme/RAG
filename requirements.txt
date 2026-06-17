@@ -1,0 +1,8 @@
+# Deployment dependencies (Vercel serverless function — query path only).
+# Keep this lean; do NOT add pandas/tiktoken here (ingestion-only, see
+# requirements-ingest.txt).
+fastapi==0.137.1
+pydantic==2.13.4
+pinecone==9.1.0
+langchain-openai==1.3.2
+python-dotenv==1.2.2
