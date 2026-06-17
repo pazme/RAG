@@ -1,8 +1,6 @@
 import sys
 from pathlib import Path
 
-import uvicorn
-
 _SRC = Path(__file__).resolve().parents[1] / "src"
 
 if str(_SRC) not in sys.path:
@@ -35,6 +33,8 @@ def prompt(request: PromptRequest) -> dict:
     return answer(request.question)
 
 
-# for local run
+# for local run (uvicorn is dev-only, not installed on Vercel)
 if __name__ == "__main__":
+    import uvicorn
+
     uvicorn.run(app, host="127.0.0.1", port=8080)
