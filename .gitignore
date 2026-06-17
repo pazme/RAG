@@ -2,10 +2,22 @@
 CLAUDE.md
 .claude/
 
+# Secrets
+.env
+
+# Vercel
+.vercel/
+
 # Python
 .venv/
 __pycache__/
 *.py[cod]
+
+# Logs
+*.log
+
+# pytest
+.pytest_cache/
 
 # IDE
 .idea/
