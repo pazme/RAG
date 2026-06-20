@@ -26,9 +26,9 @@ PINECONE_API_KEY: str = _require_env("PINECONE_API_KEY")
 PINECONE_INDEX: str = os.environ.get("PINECONE_INDEX", "medium-rag-index")
 
 # gateway model ids
-EMBEDDING_MODEL: str = "ZYRANGG-text-embedding-3-small"
+EMBEDDING_MODEL: str = "NBUECSE-text-embedding-3-small"
 EMBEDDING_DIMENSIONS: int = 1536
-GPT_5_MODEL: str = "ZYRANGG-gpt-5-mini"
+GPT_5_MODEL: str = "NBUECSE-gpt-5-mini"
 
 # RAG params
 CHUNK_SIZE: int = 512
